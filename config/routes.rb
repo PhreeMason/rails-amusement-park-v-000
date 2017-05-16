@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-    resource :sessions, only: :create
+    resources :sessions, only: :create
     get '/signin' => 'sessions#new', as: :new_sessions
     
-    resource :users
+    resources :users
     root 'application#home'
     
 end
 
 #rails s -p $PORT -b $IP
+#page.find("a[href='/users/new']").text
+#<%= link_to "Sign in", new_sessions_path %>
