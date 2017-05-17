@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-  before_action :admin_check, only: [:new, :create]
+  before_action :admin_check, only: [:new, :create, :update, :edit]
   
   def show
     if current_user
@@ -17,6 +17,14 @@ class AttractionsController < ApplicationController
     end
   end
   
+  def  edit 
+    if current_user
+      @attraction = Attraction.find_by(id: params[:id]) 
+    else
+      redirect_to '/'
+    end
+  end
+  
   def new
     @attraction = Attraction.new
   end
@@ -27,6 +35,15 @@ class AttractionsController < ApplicationController
       redirect_to @attraction
     else
       render :new
+    end
+  end
+  
+  def update
+    @attraction = Attraction.find_by(id: params[:id])
+    if @attraction.update(attractions_params)
+      redirect_to @attraction
+    else
+      render :edit
     end
   end
   

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   post 'rides/ride', as: :ride  
 
   resources :attractions 
