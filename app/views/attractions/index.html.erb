@@ -1,0 +1,7 @@
+<h1>Attractions</h1>
+<%@attractions.each do |attraction| %>
+    <%= render(attraction) %>
+<% end %>
+<br>
+<br>
+<%= link_to "New Attraction", new_attraction_path %>

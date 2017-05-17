@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  post 'rides/ride', as: :ride  
+
+  resources :attractions 
+
     resources :sessions, only: :create
+    get '/logout' => 'sessions#destroy', as: :logout
     get '/signin' => 'sessions#new', as: :new_sessions
     
     resources :users
@@ -9,4 +14,3 @@ end
 
 #rails s -p $PORT -b $IP
 #page.find("a[href='/users/new']").text
-#<%= link_to "Sign in", new_sessions_path %>
